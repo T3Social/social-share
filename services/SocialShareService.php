@@ -38,9 +38,7 @@ class SocialShareService
      */
     protected function getDriver(SocialShareProvider $provider)
     {
-        if (!isset($this->drivers[$provider->id])) {
-            $this->drivers[$provider->id] = $this->createDriver($provider);
-        }
+        $this->drivers[$provider->id] ??= $this->createDriver($provider);
 
         return $this->drivers[$provider->id];
     }
